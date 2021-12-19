@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="static/style.css" rel="stylesheet">
+    <title>Вчителька на виклик</title>
+</head>
+
+<body>
+    <main class="content">
+        <div class="top">
+            <img class="teacher" src="/static/teacher.png">
+            <div class="teachCaps">
+                <h1 style="font-size: 42px">Оксана Кур`єнко</h1>
+                <h2 style="font-weight: normal; text-align: right; margin-top: 5px;">Вчителька на виклик</h2>
+                <h2 style="font-weight: normal; text-align: right; margin-top: 15px;">Дзвоніть за номером</h2>
+                <h2 style="font-weight: bold; text-align: right; margin-top: 5px;">+38 047 273 0271</h2>
+                <img src="/static/caps.png" style="margin-top: 50px; width: 300px">
+            </div>
+        </div>
+        <div class="middle">
+            <h1 style="color: #333333">Відгуки про мене</h1>
+            <div class="comments">
+                {% for comm in comments %}
+                <div class="comment">
+                    <div class="commentAuthor">{{comm.author}}</div>
+                    <div class="commentText">{{comm.text}}</div>
+                </div>
+                {% endfor %}
+            </div>
+            <form class="commentForm" method="POST" action="/add_comment">
+                {% csrf_token %}
+                <div style="font-size: 24px; font-weight: 500; align-self: center; padding-bottom: 20px;">Залиште тут відгук про мене</div>
+                <input type="text" name="author" placeholder="Ваше ім'я" required>
+                <textarea type="text" name="text" style="margin-top: 10px;" placeholder="Тут напишіть Ваше враження про мене" required></textarea>
+                <input type="submit" value="Відправити цей гарний відгук" style="margin-top: 10px">
+            </form>
+        </div>
+        <div class="bottom">
+            <div class="devText">
+                <div style="font-size: 18px; margin-bottom: 5px">Розробник сайту</div>
+                <div>Назар Сергійович Нечитайло</div>
+                <div style="font-size: 20px; margin-top: 4px;">+380 93 475 29 34</div>
+            </div>
+            <div style="position: relative; height: 100%">
+                <img src="/static/dev.png" class="devImg">
+            </div>
+        </div>
+        </div>
+</body>
+
+</html>
